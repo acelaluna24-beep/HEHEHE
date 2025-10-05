@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FORR YOUUU</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0; padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(120deg, #fdeff9 0%, #ecb2ff 50%, #b7e3ff 100%);
+      font-family: 'Quicksand', 'Arial', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      text-align: center;
+    }
+    .bg-anim {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      animation: bgmove 14s linear infinite alternate;
+      background: radial-gradient(circle at 30% 30%, #fff6e9 0%, #ffcafc 40%, transparent 80%) no-repeat;
+    }
+    @keyframes bgmove {
+      0% {background-position: left top;}
+      100% {background-position: right bottom;}
+    }
+    .sparkle {
+      position: fixed;
+      width: 100vw; height: 100vh;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .sparkle span, .heart span {
+      position: absolute;
+      font-size: 2.5rem;
+      opacity: 0.7;
+      animation: float 8s infinite linear;
+    }
+    .sparkle span { color: #fffad1; }
+    .sparkle span:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s;}
+    .sparkle span:nth-child(2) { top: 70%; left: 15%; animation-delay: 2s;}
+    .sparkle span:nth-child(3) { top: 20%; left: 80%; animation-delay: 1.3s;}
+    .sparkle span:nth-child(4) { top: 90%; left: 55%; animation-delay: 3.7s;}
+    .sparkle span:nth-child(5) { top: 30%; left: 65%; animation-delay: 2.7s;}
+    .heart {
+      position: fixed;
+      width: 100vw; height: 100vh;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .heart span { color: #ff9ab5; }
+    .heart span:nth-child(1) { top: 13%; left: 18%; animation-delay: 1.1s;}
+    .heart span:nth-child(2) { top: 60%; left: 65%; animation-delay: 2.9s;}
+    .heart span:nth-child(3) { top: 40%; left: 35%; animation-delay: 4s;}
+    .heart span:nth-child(4) { top: 80%; left: 80%; animation-delay: 2.2s;}
+    .heart span:nth-child(5) { top: 5%; left: 70%; animation-delay: 3.3s;}
+    @keyframes float {
+      0% { transform: translateY(0) scale(1);}
+      50% { transform: translateY(-60px) scale(1.15);}
+      100% { transform: translateY(0) scale(1);}
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3.4rem;
+      color: #ff69b4;
+      margin-top: 38px;
+      text-shadow: 0 2px 14px #fff7;
+    }
+    .subtitle {
+      font-family: 'Quicksand', cursive;
+      font-size: 1.3rem;
+      color: #9866e0;
+      margin-bottom: 18px;
+      margin-top: -10px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      background: #fff5;
+      border-radius: 12px;
+      display: inline-block;
+      padding: 8px 20px;
+      box-shadow: 0 2px 10px #f9e2e7;
+    }
+    .gif-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 22px;
+      margin-top: 30px;
+      z-index: 2;
+    }
+    .gif-img {
+      width: 115px;
+      height: 115px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #fffff9;
+      box-shadow: 0 4px 16px #ffb7e6;
+      background: #fff8;
+      transition: transform 0.22s;
+    }
+    .gif-img:hover {
+      transform: scale(1.13) rotate(-6deg);
+      box-shadow: 0 4px 32px #ff69b4;
+    }
+    #clickBtn {
+      margin: 50px auto 0 auto;
+      font-size: 2.1rem;
+      padding: 24px 68px;
+      background: linear-gradient(90deg,#ffd6f7,#b7e3ff 80%);
+      color: #e94f9b;
+      border: none;
+      border-radius: 32px;
+      cursor: pointer;
+      font-family: 'Pacifico', cursive;
+      font-weight: bold;
+      box-shadow: 0 2px 16px #b7e3ff;
+      transition: background .3s, transform .2s, box-shadow .2s;
+      position: relative;
+      animation: bounce 2.6s infinite;
+      z-index: 2;
+      outline: none;
+    }
+    #clickBtn::after {
+      content: "✨";
+      position: absolute;
+      right: 22px; top: 10px;
+      font-size: 2rem;
+      pointer-events: none;
+      animation: shine 2.6s infinite;
+    }
+    @keyframes bounce {
+      0%,100% {transform: translateY(0);}
+      20% {transform: translateY(-8px);}
+      50% {transform: translateY(-16px);}
+      70% {transform: translateY(-8px);}
+      90% {transform: translateY(0);}
+    }
+    @keyframes shine {
+      0%,100% {opacity: 0.6;}
+      50% {opacity: 1;}
+    }
+    #reveal {
+      display: none;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      margin-top: 30px;
+      animation: fadeIn 1.3s;
+      z-index: 3;
+      position: relative;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .side-pics {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .big-pic {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 28px;
+      border: 6px dashed #ffb7e6;
+      box-shadow: 0 6px 32px #f9e2e7;
+      background: #fff8;
+      transition: transform .22s;
+      position: relative;
+    }
+    .big-pic:hover {
+      transform: scale(1.09) rotate(1deg);
+      box-shadow: 0 4px 32px #e94f9b;
+    }
+    .center-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      min-width: 290px;
+      padding: 14px 0;
+    }
+    .main-video {
+      width: 600px;
+      height: 340px;
+      border-radius: 32px;
+      box-shadow: 0 4px 32px #e94f9b77;
+      background: #ffd6f7;
+      margin-bottom: 12px;
+      border: 4px solid #b7e3ff;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .effort-message {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.1rem;
+      color: #e94f9b;
+      background: #fff8;
+      border-radius: 12px;
+      padding: 20px 32px;
+      box-shadow: 0 2px 12px #b7e3ff;
+      display: inline-block;
+      margin: 0 auto 24px auto;
+      border: 2px dashed #fbcbff;
+      position: relative;
+      z-index: 4;
+      animation: fadeIn 1.7s;
+    }
+    .effort-message .emoji {
+      font-size: 2.5rem;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    .dedication {
+      margin-top: 32px;
+      font-family: 'Pacifico', cursive;
+      color: #9866e0;
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+    @media (max-width: 1000px) {
+      #reveal { gap: 10px; flex-direction: column; align-items: center;}
+      .big-pic { width: 200px; height: 200px;}
+      .main-video { width: 90vw; height: 55vw; }
+      .center-content { min-width: unset;}
+      .effort-message { font-size: 1.5rem; padding: 14px 10vw; }
+    }
+    @media (max-width: 600px) {
+      .big-pic { width: 120px; height: 120px;}
+      .main-video { width: 98vw; height: 60vw; }
+      .effort-message { font-size: 1.1rem; padding: 10px 2vw; margin: 0 auto 12px auto;}
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-anim"></div>
+  <div class="sparkle">
+    <span>✨</span><span>😝</span><span>✨</span><span>✨</span><span>💙</span>
+  </div>
+  <div class="heart">
+    <span>💖</span><span>💝</span><span>💓</span><span>💞</span><span> 😊 </span>
+  </div>
+  <h1 id="mainTitle">FORR YOUUU</h1>
+  <div class="subtitle"></div>
+  <div class="gif-row" id="gifRow">
+    <img class="gif-img" src="https://i.pinimg.com/originals/2e/71/df/2e71df7cb175822e4f2b0eaa5b99f4cb.gif">
+    <img class="gif-img" src="https://i.pinimg.com/originals/c2/4f/d0/c24fd037705f74f56f5768db4914334b.gif">
+    <img class="gif-img" src="https://i.pinimg.com/originals/ab/98/3e/ab983edacf4e446da86c72d0f0628f1d.gif">
+  </div>
+  <button id="clickBtn">CLICK HEREEEEE</button>
+  <div id="reveal">
+    <div class="side-pics">
+      <img class="big-pic" src="e2f13dc7-0a68-4349-9fdd-6cbb4d094649.jpeg">
+      <img class="big-pic" src="db2e50de-99c0-441a-ab28-0ea73e5d0204.jpeg">
+    </div>
+    <div class="center-content">
+      <div class="effort-message" id="effortMsg" style="display:none;">
+        <span class="emoji"> 😊 </span>
+        I hope you likee it 
+      </div>
+      <!-- Main large video -->
+      <video class="main-video" controls>
+        <source src="9da8291d-cd3e-4c43-b6d8-664b28080bfb.mp4">
+        
+      </video>
+    </div>
+    <div class="side-pics">
+      <img class="big-pic" src="86ad12ba-c2ba-4714-8d88-9ecb31344136.jpeg">
+      <img class="big-pic" src="4a5a297e-970f-4352-8d15-724d9ae186ae.jpeg">
+    </div>
+  </div>
+  <div class="dedication" id="dedication" style="display:none;"></div>
+  <script>
+    const clickBtn = document.getElementById('clickBtn');
+    const reveal = document.getElementById('reveal');
+    const gifRow = document.getElementById('gifRow');
+    const mainTitle = document.getElementById('mainTitle');
+    const effortMsg = document.getElementById('effortMsg');
+    const dedication = document.getElementById('dedication');
+    clickBtn.onclick = function() {
+      clickBtn.style.display = 'none';
+      gifRow.style.display = 'none';
+      setTimeout(function(){
+        reveal.style.display = 'flex';
+        mainTitle.textContent = "HIHEHEHI 💙";
+        effortMsg.style.display = 'inline-block';
+        dedication.style.display = 'block';
+      }, 900);
+    }
+  </script>
+</body>
+</html>
